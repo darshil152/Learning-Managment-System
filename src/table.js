@@ -13,7 +13,6 @@ export default class Table extends Component {
                             <th colspan="6">Infornation</th>
                         </tr>
                         <tr className='val'>
-                    
                             <th>Image</th>
                             <th>First Name</th>
                             <th>Middle Name</th>
@@ -46,7 +45,8 @@ export default class Table extends Component {
 
                         {JSON.parse(localStorage.getItem('student')).map((items, i) => {
                             return (
-                                <tr>
+                                <tr >
+                                
                                     <th><img src={items.image} className="table-pic" /></th>
                                     <th>{items.fname}</th>
                                     <th>{items.mname}</th>
@@ -56,7 +56,7 @@ export default class Table extends Component {
                                     <th>{items.email}</th>
                                     <th>{items.contact}</th>
                                     <th>{items.econtact}</th>
-
+                                
                                    
                                     
                                     <th>{items.ffname}</th>
