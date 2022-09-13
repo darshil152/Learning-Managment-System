@@ -9,7 +9,7 @@ export default class Form extends Component {
         super(props)
 
         this.state = {
-            image: '',
+            image: profile,
             fname: '',
             mname: '',
             lname: '',
@@ -33,7 +33,7 @@ export default class Form extends Component {
             state: '',
             country: '',
             zipcode: '',
-            y:[]
+            y: []
 
         }
 
@@ -128,19 +128,19 @@ export default class Form extends Component {
     click = (e) => {
 
         // let x = localStorage.getItem('studet')
-        
-            // let y = this.state.y
 
-           
+        // let y = this.state.y
 
-            let y = localStorage.getItem("student") ? JSON.parse(localStorage.getItem('student')) :[]
 
-            if(y.length > 0){
-                let alreadyexisted = false
-                if ((/^[a-zA-Z0-9]+@[a-zA-Z0-9]+\.[A-Za-z]+$/.test((this.state.email)))) {
-                    alreadyexisted = true
-                }
-            
+
+        let y = localStorage.getItem("student") ? JSON.parse(localStorage.getItem('student')) : []
+
+        if (y.length > 0) {
+            let alreadyexisted = false
+            if ((/^[a-zA-Z0-9]+@[a-zA-Z0-9]+\.[A-Za-z]+$/.test((this.state.email)))) {
+                alreadyexisted = true
+            }
+
 
             if (alreadyexisted) {
                 y.push({
@@ -168,15 +168,16 @@ export default class Form extends Component {
                     state: this.state.state,
                     country: this.state.country,
                     zipcode: this.state.zipcode,
+                    id: Date.now()
                 })
-    
-                
+
+
                 localStorage.setItem('student', JSON.stringify(y))
                 window.location.href = 'table'
             } else {
                 alert('please enter valid email')
             }
-        }else{
+        } else {
             y.push({
                 image: this.state.image,
                 fname: this.state.fname,
@@ -202,6 +203,7 @@ export default class Form extends Component {
                 state: this.state.state,
                 country: this.state.country,
                 zipcode: this.state.zipcode,
+                id: Date.now()
             })
 
             // this.setState({ Array: y })
@@ -214,21 +216,22 @@ export default class Form extends Component {
     render() {
         return (
             <Layout>
-                <div className='form'>
+                <div className='main-section'>
                     <div className='container'>
                         <div className='row'>
                             <div className='col-12 abc'>
                                 <h1 className='student detail'>Student Detail</h1>
                             </div>
+
                             <div className='col-auto'>
                                 <div className='upload'>
-                                    <img src={profile} className="male" />
-
+                                    <img src={this.state.image} className="male" />
                                 </div>
                             </div>
+
                             <div className='col-9 xyz'>
-                                <h4 className='detail1'>Upload Your Image</h4>    
-                                <input type="file" id="myFile" className='button1' onChange={this.onimagechange} />       
+                                <h4 className='detail1'>Upload Your Image</h4>
+                                <input type="file" id="myFile" className='button1' onChange={this.onimagechange} />
                             </div>
                         </div>
                         <div className='row row1'>

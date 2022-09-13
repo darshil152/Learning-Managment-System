@@ -9,12 +9,27 @@
     margin-bottom: 10px;
     font-weight: 600;
   }
-  .col-12{
+  .abc{
     text-align: center;
+    
   }
+
+  .xyzq{
+    margin-top: 103px !important;
+  }
+
   img.student{
      height: 25px;
   }
-  /* .col-2.btn-add{
-    position: fixed;
-  } */
+
+
+.sidebar{
+      height: 100vh;
+      width: 200px;
+      position: fixed;
+      top: 0;
+      left: 0;
+      background: white;   
+      box-shadow: 0px 0px 3px grey;
+      z-index: 1;
+}

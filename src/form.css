@@ -1,7 +1,4 @@
-.container{
-    position: absolute;
-    top: 150px;
-}
+
 
 h1.student.detail{
     font-family: 'Poppins', sans-serif;
@@ -17,8 +14,9 @@ button.click{
     width: 20%;
 }
 
-.form{
-    margin-left: 300px;
+.main-section{
+    margin-left: 220px;
+    margin-top: 10px;
 }
 
 .upload{
@@ -28,9 +26,7 @@ img.male{
     margin-top: 50px;
     height: 75px;
 }
-.col-12.xyz{
-    text-align: left;
-}
+
 button.button1{
     background-color: black;
     color: white;

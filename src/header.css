@@ -2,7 +2,7 @@
 
 
 img.logo{
-    height: 100px;
+    height: 80px;
     margin-left: 15px;
 }
 
@@ -10,11 +10,17 @@ img.logo{
     display: flex;
     margin-right: 20px;
 }
+
 h4.dummy{
-    margin-top: 40px;
-    font-family: 'Poppins', sans-serif;
-}
-h4.dummy{
-    margin-top: 50px;
+    margin-top: 20px;
     margin-left: 15px;
+}
+.header{
+    position: fixed;
+    top: 0;
+    height: 100px;
+    width: 100%;
+    z-index: 1;
+    background: white;
+    box-shadow: 0px 0px 3px grey;
 }

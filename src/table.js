@@ -2,15 +2,32 @@ import React, { Component } from 'react'
 import Layout from './layout'
 
 export default class Table extends Component {
+
+    state = {
+        people: JSON.parse(localStorage.getItem('student'))
+    }
+
+    click = (id) => {
+
+        const filteredPeople = this.state.people.filter((item) => item.id !== id);
+
+        this.setState({ people: filteredPeople })
+        localStorage.setItem('student', JSON.stringify(filteredPeople))
+    }
+
+
+
+
     render() {
         return (
             <Layout>
-                <div className='container2'>
+                <div className='main-section'>
                     <table>
                         <tr className='heading'>
                             <th colspan="9">Student</th>
                             <th colspan="9">Parent</th>
                             <th colspan="6">Infornation</th>
+                            <th colSpan="2">Action</th>
                         </tr>
                         <tr className='val'>
                             <th>Image</th>
@@ -22,6 +39,7 @@ export default class Table extends Component {
                             <th>Email</th>
                             <th>Phno</th>
                             <th>ephno</th>
+
 
                             <th>Father's First Name:</th>
                             <th>Father's Middle Name:</th>
@@ -40,13 +58,16 @@ export default class Table extends Component {
                             <th>state</th>
                             <th>country</th>
                             <th>zipcode</th>
+
+                            <th>Edit</th>
+                            <th>Delete</th>
                         </tr>
 
 
                         {JSON.parse(localStorage.getItem('student')).map((items, i) => {
                             return (
                                 <tr >
-                                
+
                                     <th><img src={items.image} className="table-pic" /></th>
                                     <th>{items.fname}</th>
                                     <th>{items.mname}</th>
@@ -56,9 +77,10 @@ export default class Table extends Component {
                                     <th>{items.email}</th>
                                     <th>{items.contact}</th>
                                     <th>{items.econtact}</th>
-                                
-                                   
-                                    
+
+
+
+
                                     <th>{items.ffname}</th>
                                     <th>{items.fmname}</th>
                                     <th>{items.moname}</th>
@@ -68,7 +90,7 @@ export default class Table extends Component {
                                     <th>{items.fqualification}</th>
                                     <th>{items.fcontact}</th>
                                     <th>{items.mqualification}</th>
-                               
+
 
 
                                     <th>{items.line1}</th>
@@ -77,8 +99,10 @@ export default class Table extends Component {
                                     <th>{items.state}</th>
                                     <th>{items.country}</th>
                                     <th>{items.zipcode}</th>
+                                    <th><button>Edit</button></th>
+                                    <th><button onClick={() => this.click(items.id)}>Delete</button></th>
                                 </tr>
-                            )                      
+                            )
                         })}
 
                     </table>
