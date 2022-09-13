@@ -10,6 +10,13 @@ h1.student.detail{
     margin-left: 0px;
     margin-top: 30px;
 }
+
+button.click{
+    margin-top: 15px;
+    font-family: 'Poppins', sans-serif;
+    width: 20%;
+}
+
 .form{
     margin-left: 300px;
 }

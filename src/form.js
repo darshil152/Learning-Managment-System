@@ -414,8 +414,8 @@ export default class Form extends Component {
                                 <input type='number' onChange={this.onzipcodechange} />
                             </div>
                         </div>
-                        <div></div>
-                        <button onClick={this.click}>Save</button>
+                        <button type="button" onClick={this.click} class="btn btn-primary click">Save</button>
+                        {/* <button className='click' >Save</button> */}
                     </div>
 
                 </div>
