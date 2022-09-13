@@ -13,6 +13,7 @@ export default class Table extends Component {
                             <th colspan="6">Infornation</th>
                         </tr>
                         <tr className='val'>
+                        adasdsa
                             <th>Image</th>
                             <th>First Name</th>
                             <th>Middle Name</th>
