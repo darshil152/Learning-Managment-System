@@ -1,0 +1,19 @@
+.btn-add {
+    box-shadow: 0px 15px 13px #000;
+      height: 190vh;
+  }
+  .btn {
+    width: 50%;
+   font-size: 15px;
+    margin-bottom: 10px;
+    font-weight: 600;
+  }
+  .col-12{
+    text-align: center;
+  }
+  img.student{
+     height: 25px;
+  }
+  /* .col-2.btn-add{
+    position: fixed;
+  } */

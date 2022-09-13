@@ -1,0 +1,16 @@
+.container2{
+    position: absolute;
+    top: 150px;
+    margin-left: 350px;
+}
+
+tr.heading{
+    text-align: center;
+}
+tr.val th{
+    padding: 15px;
+}
+
+img.table-pic{
+    height: 50px;
+}
