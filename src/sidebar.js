@@ -2,9 +2,14 @@ import React, { Component } from 'react'
 import "./sidebar.css"
 import icon from './icon.png'
 import student from './student.png'
+import { click } from '@testing-library/user-event/dist/click'
+import Form from './form'
 
 export default class Sidebar extends Component {
-  render() {
+    click = (e)=>{
+        window.location.href = "form"
+    }
+  render() { 
     return (
         <>
         <div className='container-fluid'>
@@ -17,7 +22,7 @@ export default class Sidebar extends Component {
                         </div>
                         <div className='col-12 abc'>
                         <img src={student} className="student" />
-                            <button className="btn">Add Students</button>
+                            <button className="btn" onClick={this.click}>Add Students</button>
                         </div>
                     </div>
                 </div>
