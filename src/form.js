@@ -3,8 +3,8 @@ import Layout from './layout';
 import "./form.css"
 import profile from './male.png'
 
-export default class Form extends Component {
 
+export default class Form extends Component {
     constructor(props) {
         super(props)
 
@@ -38,6 +38,8 @@ export default class Form extends Component {
         }
 
     }
+
+   
     onimagechange = (e) => {
         var file = e.target.files[0];
         var reader = new FileReader();
@@ -130,8 +132,6 @@ export default class Form extends Component {
         // let x = localStorage.getItem('studet')
 
         // let y = this.state.y
-
-
 
         let y = localStorage.getItem("student") ? JSON.parse(localStorage.getItem('student')) : []
 

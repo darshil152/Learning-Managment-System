@@ -1,23 +1,35 @@
 import React, { Component } from 'react'
+import Form from './form';
 import Layout from './layout'
 
 export default class Table extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            people: JSON.parse(localStorage.getItem('student'))
 
-    state = {
-        people: JSON.parse(localStorage.getItem('student'))
+        }
+
     }
+
+    componentDidMount() {
+        console.log(this.state.people, "././")
+    }
+
 
     click = (id) => {
 
         const filteredPeople = this.state.people.filter((item) => item.id !== id);
-
         this.setState({ people: filteredPeople })
         localStorage.setItem('student', JSON.stringify(filteredPeople))
+
     }
 
+    click1 = () => {
+        window.location.href = 'form'
+    }
 
-
-
+   
     render() {
         return (
             <Layout>
@@ -99,7 +111,7 @@ export default class Table extends Component {
                                     <th>{items.state}</th>
                                     <th>{items.country}</th>
                                     <th>{items.zipcode}</th>
-                                    <th><button>Edit</button></th>
+                                    <th><button onClick={() => this.click1(items.id)}>Edit</button></th>
                                     <th><button onClick={() => this.click(items.id)}>Delete</button></th>
                                 </tr>
                             )
@@ -107,6 +119,7 @@ export default class Table extends Component {
 
                     </table>
                 </div>
+                
             </Layout>
 
         )
