@@ -15,6 +15,10 @@ export default class Table extends Component {
         localStorage.setItem('student', JSON.stringify(filteredPeople))
     }
 
+    click1 = (id) => {
+        window.location.href = '/form/' + id;
+    }
+
 
 
 
@@ -99,7 +103,7 @@ export default class Table extends Component {
                                     <th>{items.state}</th>
                                     <th>{items.country}</th>
                                     <th>{items.zipcode}</th>
-                                    <th><button>Edit</button></th>
+                                    <th><button onClick={() => this.click1(items.id)}>Edit</button></th>
                                     <th><button onClick={() => this.click(items.id)}>Delete</button></th>
                                 </tr>
                             )

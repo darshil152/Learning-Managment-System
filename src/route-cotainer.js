@@ -14,10 +14,11 @@ export default class Routercontainer extends Component {
             <BrowserRouter>
                 <Routes>
                     <Route path="/" element={<Form />}> </Route>
+                    <Route path="/form/:id" element={<Form />}> </Route>
                     <Route path="/form" element={<Form />}> </Route>
                     <Route path="/table" element={<Table />}> </Route>
                 </Routes>
-            </BrowserRouter>
+            </BrowserRouter >
         )
     }
 }
