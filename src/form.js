@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import Layout from './layout';
 import "./form.css"
 import profile from './male.png'
+import { findRenderedDOMComponentWithClass } from 'react-dom/test-utils';
 
 
 export default class Form extends Component {
@@ -33,13 +34,32 @@ export default class Form extends Component {
             state: '',
             country: '',
             zipcode: '',
-            y: []
+            y: [],
+            id: '',
+            currentdata: '',
 
         }
 
     }
 
-   
+    componentDidMount() {
+        let url = window.location.href;
+        let id = url.substring(url.lastIndexOf('/') + 1);
+        console.log(id)
+        this.setState({ id })
+
+        let olddata = JSON.parse(localStorage.getItem('student'));
+
+        let currentdata = {}
+        for (let i = 0; i < olddata.length; i++) {
+            if (olddata[i].id == id) {
+                currentdata = olddata[i];
+            }
+        }
+        this.setState({ currentdata, fname: currentdata.fname, gender: currentdata.gender, email: currentdata.email })
+    }
+
+
     onimagechange = (e) => {
         var file = e.target.files[0];
         var reader = new FileReader();
@@ -127,22 +147,57 @@ export default class Form extends Component {
     }
 
 
-    click = (e) => {
+     click = (e) => {
 
-        // let x = localStorage.getItem('studet')
-
-        // let y = this.state.y
 
         let y = localStorage.getItem("student") ? JSON.parse(localStorage.getItem('student')) : []
 
-        if (y.length > 0) {
-            let alreadyexisted = false
-            if ((/^[a-zA-Z0-9]+@[a-zA-Z0-9]+\.[A-Za-z]+$/.test((this.state.email)))) {
-                alreadyexisted = true
-            }
+        if (this.state.currentdata == {}) {
 
 
-            if (alreadyexisted) {
+            if (y.length > 0) {
+                let alreadyexisted = false
+                if ((/^[a-zA-Z0-9]+@[a-zA-Z0-9]+\.[A-Za-z]+$/.test((this.state.email)))) {
+                    alreadyexisted = true
+                }
+
+
+                if (alreadyexisted) {
+                    y.push({
+                        image: this.state.image,
+                        fname: this.state.fname,
+                        mname: this.state.mname,
+                        lname: this.state.lname,
+                        gender: this.state.gender,
+                        dob: this.state.dob,
+                        email: this.state.email,
+                        contact: this.state.contact,
+                        econtact: this.state.econtact,
+                        ffname: this.state.ffname,
+                        fmname: this.state.fmname,
+                        moname: this.state.moname,
+                        fflname: this.state.fflname,
+                        foccupation: this.state.foccupation,
+                        molname: this.state.molname,
+                        fqualification: this.state.fqualification,
+                        fcontact: this.state.fcontact,
+                        mqualification: this.state.mqualification,
+                        line1: this.state.line1,
+                        line2: this.state.line2,
+                        city: this.state.city,
+                        state: this.state.state,
+                        country: this.state.country,
+                        zipcode: this.state.zipcode,
+                        id: Date.now()
+                    })
+
+
+                    localStorage.setItem('student', JSON.stringify(y))
+                    window.location.href = '/table'
+                } else {
+                    alert('please enter valid email')
+                }
+            } else {
                 y.push({
                     image: this.state.image,
                     fname: this.state.fname,
@@ -171,47 +226,24 @@ export default class Form extends Component {
                     id: Date.now()
                 })
 
-
+                // this.setState({ Array: y })
                 localStorage.setItem('student', JSON.stringify(y))
-                window.location.href = 'table'
-            } else {
-                alert('please enter valid email')
+                window.location.href = '/table'
             }
         } else {
-            y.push({
-                image: this.state.image,
-                fname: this.state.fname,
-                mname: this.state.mname,
-                lname: this.state.lname,
-                gender: this.state.gender,
-                dob: this.state.dob,
-                email: this.state.email,
-                contact: this.state.contact,
-                econtact: this.state.econtact,
-                ffname: this.state.ffname,
-                fmname: this.state.fmname,
-                moname: this.state.moname,
-                fflname: this.state.fflname,
-                foccupation: this.state.foccupation,
-                molname: this.state.molname,
-                fqualification: this.state.fqualification,
-                fcontact: this.state.fcontact,
-                mqualification: this.state.mqualification,
-                line1: this.state.line1,
-                line2: this.state.line2,
-                city: this.state.city,
-                state: this.state.state,
-                country: this.state.country,
-                zipcode: this.state.zipcode,
-                id: Date.now()
-            })
 
-            // this.setState({ Array: y })
+
+            let objIndex = y.findIndex((obj => obj.id == this.state.id));
+
+            y[objIndex].fname = this.state.fname
+            y[objIndex].email = this.state.email
+            y[objIndex].gender = this.state.gender
+
             localStorage.setItem('student', JSON.stringify(y))
-            window.location.href = 'table'
+            window.location.href = '/table'
+
         }
     }
-
 
     render() {
         return (
@@ -239,13 +271,13 @@ export default class Form extends Component {
                                 <div>
                                     <label className='lableform'>First Name:</label>
                                 </div>
-                                <input type='text' onChange={this.onfnamechange} />
+                                <input type='text' value={this.state.fname} onChange={this.onfnamechange} />
                             </div>
                             <div className='col-6 std'>
                                 <div>
                                     <label className='lableform'>Middle Name:</label>
                                 </div>
-                                <input type='text' onChange={this.onmnamechange} />
+                                <input type='text' value={this.state.mname} onChange={this.onmnamechange} />
                             </div>
                         </div>
                         <div className='row row3'>
@@ -259,7 +291,7 @@ export default class Form extends Component {
                                 <div>
                                     <label className='lableform'>Gender:</label>
                                 </div>
-                                <div className='radio' onChange={this.ongenderchange} >
+                                <div className='radio' onChange={this.ongenderchange} value={this.state.gender} >
                                     <input type="radio" id="html" name="fav_language" value="Male" />
                                     <label for="html">Male</label>
                                     <input type="radio" id="html1" name="fav_language" value="Female" />
@@ -278,7 +310,7 @@ export default class Form extends Component {
                                 <div>
                                     <label for="email" className='lableform'>Enter your email:</label>
                                 </div>
-                                <input type="email" id="email" name="email" onChange={this.onemailchange} />
+                                <input type="email" id="email" name="email" value={this.state.email} onChange={this.onemailchange} />
                             </div>
                         </div>
                         <div className='row row5'>

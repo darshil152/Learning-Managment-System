@@ -7,10 +7,10 @@ import Form from './form'
 
 export default class Sidebar extends Component {
     click = (e) => {
-        window.location.href = "form"
+        window.location.href = "/form"
     }
     click1 = (e) => {
-        window.location.href = "table"
+        window.location.href = "/table"
     }
     render() {
         return (
