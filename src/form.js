@@ -35,6 +35,7 @@ export default class Form extends Component {
             zipcode: '',
             y: [],
             id: '',
+            currentdata: ''
 
         }
 
@@ -48,7 +49,7 @@ export default class Form extends Component {
 
         let olddata = JSON.parse(localStorage.getItem('student'));
 
-        let currentdata = {}
+        let currentdata = ''
         for (let i = 0; i < olddata.length; i++) {
             if (olddata[i].id == id) {
                 currentdata = olddata[i];
@@ -154,17 +155,19 @@ export default class Form extends Component {
 
         let y = localStorage.getItem("student") ? JSON.parse(localStorage.getItem('student')) : []
 
-        if (this.state.currentdata == {}) {
+        if (this.state.currentdata == '') {
 
 
             if (y.length > 0) {
-                let alreadyexisted = false
+                let validEmail = false
                 if ((/^[a-zA-Z0-9]+@[a-zA-Z0-9]+\.[A-Za-z]+$/.test((this.state.email)))) {
-                    alreadyexisted = true
+                    validEmail = true
                 }
+                console.log('email :: ', this.state.email)
 
 
-                if (alreadyexisted) {
+
+                if (validEmail) {
                     y.push({
                         image: this.state.image,
                         fname: this.state.fname,
@@ -234,9 +237,8 @@ export default class Form extends Component {
             }
         } else {
 
-
             let objIndex = y.findIndex((obj => obj.id == this.state.id));
-
+            console.log(y, objIndex, this.state.id)
             y[objIndex].fname = this.state.fname
             y[objIndex].email = this.state.email
             y[objIndex].gender = this.state.gender
@@ -313,7 +315,7 @@ export default class Form extends Component {
                                 <div>
                                     <label for="email" className='lableform'>Enter your email:</label>
                                 </div>
-                                <input type="email" id="email" name="email" value={this.state.email} />
+                                <input type="email" id="email" name="email" onChange={this.onemailchange} value={this.state.email} />
                             </div>
                         </div>
                         <div className='row row5'>
