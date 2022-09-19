@@ -4,7 +4,8 @@ import Layout from './layout'
 export default class Table extends Component {
 
     state = {
-        people: JSON.parse(localStorage.getItem('student'))
+        people: JSON.parse(localStorage.getItem('student')),
+
     }
 
     click = (id) => {
@@ -19,13 +20,17 @@ export default class Table extends Component {
         window.location.href = '/form/' + id;
     }
 
+    handleSort = (type) => {
 
+    }
 
 
     render() {
         return (
             <Layout>
                 <div className='main-section'>
+                    <buton onClick={() => this.handleSort('ace')}>sort in ace</buton><br />
+                    <buton onClick={() => this.handleSort('dec')}>sort in dec</buton>
                     <table>
                         <tr className='heading'>
                             <th colspan="9">Student</th>
@@ -68,7 +73,7 @@ export default class Table extends Component {
                         </tr>
 
 
-                        {JSON.parse(localStorage.getItem('student')).map((items, i) => {
+                        {this.state.people.map((items, i) => {
                             return (
                                 <tr >
 

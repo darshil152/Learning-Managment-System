@@ -53,6 +53,9 @@ export default class Form extends Component {
         for (let i = 0; i < olddata.length; i++) {
             if (olddata[i].id == id) {
                 currentdata = olddata[i];
+                if (olddata[i].gender && olddata[i].gender !== '') {
+                    document.getElementById(olddata[i].gender).clic();
+                }
             }
         }
         this.setState({ currentdata, fname: currentdata.fname, gender: currentdata.gender, email: currentdata.email })
@@ -297,9 +300,9 @@ export default class Form extends Component {
                                     <label className='lableform'>Gender:</label>
                                 </div>
                                 <div className='radio' onChange={this.ongenderchange} value={this.state.gender} >
-                                    <input type="radio" id="html" name="fav_language" value="Male" />
+                                    <input type="radio" id="Male" name="fav_language" value="Male" />
                                     <label for="html">Male</label>
-                                    <input type="radio" id="html1" name="fav_language" value="Female" />
+                                    <input type="radio" id="Female" name="fav_language" value="Female" />
                                     <label for="html">Female</label>
                                 </div>
                             </div>
