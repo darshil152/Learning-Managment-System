@@ -2,9 +2,10 @@ import React, { Component } from 'react'
 import Layout from './layout';
 import "./form.css"
 import profile from './male.png'
+import { findRenderedDOMComponentWithClass } from 'react-dom/test-utils';
+
 
 export default class Form extends Component {
-
     constructor(props) {
         super(props)
 
@@ -49,6 +50,7 @@ export default class Form extends Component {
 
         let olddata = JSON.parse(localStorage.getItem('student'));
 
+
         let currentdata = ''
         for (let i = 0; i < olddata.length; i++) {
             if (olddata[i].id == id) {
@@ -56,9 +58,9 @@ export default class Form extends Component {
                 if (olddata[i].gender && olddata[i].gender !== '') {
                     document.getElementById(olddata[i].gender).clic();
                 }
+                this.setState({ currentdata, fname: currentdata.fname, gender: currentdata.gender, email: currentdata.email })
             }
         }
-        this.setState({ currentdata, fname: currentdata.fname, gender: currentdata.gender, email: currentdata.email })
     }
 
     onimagechange = (e) => {
@@ -95,8 +97,6 @@ export default class Form extends Component {
     onecontactchange = (e) => {
         this.setState({ econtact: e.target.value })
     }
-
-
 
     // parent detail //
     onffnamechange = (e) => {
@@ -149,11 +149,6 @@ export default class Form extends Component {
 
 
     click = (e) => {
-
-        // let x = localStorage.getItem('studet')
-
-        // let y = this.state.y
-
 
 
         let y = localStorage.getItem("student") ? JSON.parse(localStorage.getItem('student')) : []
@@ -285,7 +280,7 @@ export default class Form extends Component {
                                 <div>
                                     <label className='lableform'>Middle Name:</label>
                                 </div>
-                                <input type='text' onChange={this.onmnamechange} />
+                                <input type='text' value={this.state.mname} onChange={this.onmnamechange} />
                             </div>
                         </div>
                         <div className='row row3'>
@@ -464,6 +459,6 @@ export default class Form extends Component {
                 </div>
 
             </Layout>
-        )
+        );
     }
 }

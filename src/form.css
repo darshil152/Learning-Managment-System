@@ -25,6 +25,7 @@ button.click{
 img.male{
     margin-top: 50px;
     height: 75px;
+    border-radius: 15px;
 }
 
 button.button1{
@@ -38,8 +39,8 @@ h4.detail1 {
     margin-top: 50px;
 }
 
-.row1{
-    margin-top: 50px;
+.row.row1{
+    margin-top: 30px;
 }
 .row2{
     margin-top: 50px;
