@@ -5,7 +5,13 @@ export default class Table extends Component {
 
     state = {
         people: JSON.parse(localStorage.getItem('student')),
-
+        // Array: [
+        //     { id: 1, name: 'lean', country: 'India', number: '12' },
+        //     { id: 2, name: 'bob', country: 'Egypt', number: '10' },
+        //     { id: 6, name: 'ethan', country: 'Canada', number: '125' },
+        //     { id: 9, name: 'alice', country: 'Denmark', number: '16' },
+        //     { id: 5, name: 'carl', country: 'Austalia', number: '13' },
+        // ],
     }
 
     click = (id) => {
@@ -22,9 +28,32 @@ export default class Table extends Component {
 
     handleSort = (type) => {
 
+        let tempArrray = this.state.people
+
+        tempArrray.sort((a, b) => {
+            const nameA = a.fname.toUpperCase(); // ignore upper and lowercase
+            const nameB = b.fname.toUpperCase(); // ignore upper and lowercase
+            if (nameA < nameB) {
+                return -1;
+            }
+            if (nameA > nameB) {
+                return 1;
+            }
+
+            // names must be equal
+            return 0;
+        });
+        console.log('temp :: ', tempArrray)
+        
+        if (type === 'ace') {
+            console.log('ace', tempArrray)
+            this.setState({ Array: tempArrray })
+        } else {
+            console.log('dec')
+        }
     }
 
-
+    
     render() {
         return (
             <Layout>
