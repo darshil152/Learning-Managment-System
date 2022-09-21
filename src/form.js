@@ -56,7 +56,7 @@ export default class Form extends Component {
             if (olddata[i].id == id) {
                 currentdata = olddata[i];
                 if (olddata[i].gender && olddata[i].gender !== '') {
-                    document.getElementById(olddata[i].gender).clic();
+                    document.getElementById(olddata[i].gender).click();
                 }
                 this.setState({ currentdata, fname: currentdata.fname, gender: currentdata.gender, email: currentdata.email })
             }

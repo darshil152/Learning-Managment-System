@@ -4,6 +4,7 @@ import icon from './icon.png'
 import student from './student.png'
 import { click } from '@testing-library/user-event/dist/click'
 import Form from './form'
+import { Link } from 'react-router-dom'
 
 export default class Sidebar extends Component {
     click = (e) => {
@@ -24,14 +25,18 @@ export default class Sidebar extends Component {
                     </div>
                     <div className='col-12 abc'>
                         <img src={student} className="student" />
-                        <button className="btn" onClick={this.click}>Add Students</button>
+                        <Link to={'/form'} >
+                            <button className="btn">Add Students</button>
+                        </Link>
                     </div>
                     <div className='col-12 abc'>
                         <img src={student} className="student" />
-                        <button className="btn" onClick={this.click1}>View Table</button>
+                        <Link to={'/table'} >
+                            <button className="btn">View Table</button>
+                        </Link>
                     </div>
                 </div>
-            </div>
+            </div >
 
 
         )
