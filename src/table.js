@@ -37,7 +37,7 @@ export default class table extends Component {
             empty: true,
             customBodyRender: (value, tableMeta, updateValue) => {
               return (
-                <Link to={'/form/' + value} >
+                <Link to={'/view/' + value} >
                   <button >
                     View
                   </button>

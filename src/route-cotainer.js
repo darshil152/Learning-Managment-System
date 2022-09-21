@@ -7,6 +7,8 @@ import {
 } from "react-router-dom";
 import Form from './form';
 import Table from './table';
+import View from './view';
+
 
 export default class Routercontainer extends Component {
     render() {
@@ -14,6 +16,7 @@ export default class Routercontainer extends Component {
             <BrowserRouter>
                 <Routes>
                     <Route path="/" element={<Form />}> </Route>
+                    <Route path="/view/:id" element={<View />}> </Route>
                     <Route path="/form/:id" element={<Form />}> </Route>
                     <Route path="/form" element={<Form />}> </Route>
                     <Route path="/table" element={<Table />}> </Route>
