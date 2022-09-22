@@ -1,4 +1,3 @@
-import { Login } from '@mui/icons-material';
 import React, { Component } from 'react'
 
 import {
@@ -9,6 +8,7 @@ import {
 import Form from './form';
 import Table from './table';
 import View from './view';
+import Login from './login';
 
 export default class Routercontainer extends Component {
     render() {
@@ -16,12 +16,13 @@ export default class Routercontainer extends Component {
             <BrowserRouter>
                 <Routes>
                     <Route path="/" element={<Form />}> </Route>
+                    <Route path="/login" element={<Login />}> </Route>
                     <Route path="/view/:id" element={<View />}> </Route>
                     <Route path="/form/:id" element={<Form />}> </Route>
                     <Route path="/form" element={<Form />}> </Route>
                     <Route path="/table" element={<Table />}> </Route>
                 </Routes>
-           </BrowserRouter>
+            </BrowserRouter>
         )
     }
 }

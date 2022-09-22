@@ -59,7 +59,7 @@ export default class Form extends Component {
                 if (olddata[i].gender && olddata[i].gender !== '') {
                     document.getElementById(olddata[i].gender).click();
                 }
-                this.setState({ currentdata,dob:currentdata.dob ,password: currentdata.password, fname: currentdata.fname, lname: currentdata.lname, gender: currentdata.gender, email: currentdata.email })
+                this.setState({ currentdata, dob: currentdata.dob, password: currentdata.password, fname: currentdata.fname, lname: currentdata.lname, gender: currentdata.gender, email: currentdata.email })
             }
         }
     }
@@ -318,7 +318,7 @@ export default class Form extends Component {
                                 <div>
                                     <label for="birthday" className='lableform'>Birthday:</label>
                                 </div>
-                                <input type="date" id="birthday" name="birthday"  value={this.state.dob} onChange={this.ondobchange} />
+                                <input type="date" id="birthday" name="birthday" value={this.state.dob} onChange={this.ondobchange} />
                             </div>
                             <div className='col-4 std'>
                                 <div>
@@ -330,7 +330,7 @@ export default class Form extends Component {
                                 <div>
                                     <label for="password" className='lableform'>Enter your password:</label>
                                 </div>
-                                <input type="password" id="password" name="password"  onChange={this.onpasswordchange} value={this.state.password} />
+                                <input type="password" id="password" name="password" onChange={this.onpasswordchange} value={this.state.password} />
                             </div>
                         </div>
 
