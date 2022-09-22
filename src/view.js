@@ -20,9 +20,9 @@ export default class View extends Component {
             if (olddata[i].id == id) {
                 currentdata = olddata[i];
             }
-
         }
         this.setState({ currentdata })
+        console.log(currentdata)
     }
     render() {
         return (
@@ -32,7 +32,7 @@ export default class View extends Component {
                         <div class="team-single">
                             <div class="row">
                                 <div class="col-lg-4 col-md-5 xs-margin-30px-bottom">
-                                    <div class="team-single-img">
+                                    <div class="team-single-img mt-5">
                                         <img src={this.state.currentdata.image} alt="" className='viewimage' />
                                     </div>
 
@@ -45,13 +45,13 @@ export default class View extends Component {
                                             <ul class="list-style9 no-margin">
                                                 <li>
 
-                                                    <div class="row">
-                                                        <div class="col-md-5 col-5">
+                                                    <div class="row mt-5">
+                                                        <div class="col-md-5 col-5 ">
                                                             <i class="fas fa-graduation-cap text-orange"></i>
-                                                            <strong class="margin-10px-left text-orange">Degree:</strong>
+                                                            <strong class="margin-10px-left  abc">First Name:</strong>
                                                         </div>
                                                         <div class="col-md-7 col-7">
-                                                            <h1 >{this.state.currentdata.fname}</h1>
+                                                            <h1 className='firstname'>{this.state.currentdata.fname}</h1>
                                                         </div>
                                                     </div>
 
@@ -61,10 +61,10 @@ export default class View extends Component {
                                                     <div class="row">
                                                         <div class="col-md-5 col-5">
                                                             <i class="far fa-gem text-yellow"></i>
-                                                            <strong class="margin-10px-left text-yellow">Exp.:</strong>
+                                                            <strong class="margin-10px-left  abc">Last Name:</strong>
                                                         </div>
                                                         <div class="col-md-7 col-7">
-                                                            <p>4 Year in Education</p>
+                                                            <h1 className='firstname'>{this.state.currentdata.lname}</h1>
                                                         </div>
                                                     </div>
 
@@ -74,23 +74,34 @@ export default class View extends Component {
                                                     <div class="row">
                                                         <div class="col-md-5 col-5">
                                                             <i class="far fa-file text-lightred"></i>
-                                                            <strong class="margin-10px-left text-lightred">Courses:</strong>
+                                                            <strong class="margin-10px-left  abc">Email:</strong>
                                                         </div>
                                                         <div class="col-md-7 col-7">
-                                                            <p>Design Category</p>
+                                                            <h1 className='firstname'>{this.state.currentdata.email}</h1>
                                                         </div>
                                                     </div>
 
+                                                </li>
+                                                <li>
+                                                    <div class="row">
+                                                        <div class="col-md-5 col-5">
+                                                            <i class="fas fa-envelope text-pink abc"></i>
+                                                            <strong class="margin-10px-left xs-margin-four-left  abc">Gender:</strong>
+                                                        </div>
+                                                        <div class="col-md-7 col-7">
+                                                            <h1 className='firstname'>{this.state.currentdata.gender}</h1>
+                                                        </div>
+                                                    </div>
                                                 </li>
                                                 <li>
 
                                                     <div class="row">
                                                         <div class="col-md-5 col-5">
                                                             <i class="fas fa-map-marker-alt text-green"></i>
-                                                            <strong class="margin-10px-left text-green">Address:</strong>
+                                                            <strong class="margin-10px-left  abc">Country:</strong>
                                                         </div>
                                                         <div class="col-md-7 col-7">
-                                                            <p>Regina ST, London, SK.</p>
+                                                            <h1 className='firstname'>{this.state.currentdata.country}</h1>
                                                         </div>
                                                     </div>
 
@@ -99,11 +110,11 @@ export default class View extends Component {
 
                                                     <div class="row">
                                                         <div class="col-md-5 col-5">
-                                                            <i class="fas fa-mobile-alt text-purple"></i>
-                                                            <strong class="margin-10px-left xs-margin-four-left text-purple">Phone:</strong>
+                                                            <i class="fas fa-mobile-alt text-purple "></i>
+                                                            <strong class="margin-10px-left xs-margin-four-left  abc">City:</strong>
                                                         </div>
                                                         <div class="col-md-7 col-7">
-                                                            <p>(+44) 123 456 789</p>
+                                                            <h1 className='firstname'>{this.state.currentdata.city}</h1>
                                                         </div>
                                                     </div>
 
@@ -112,55 +123,36 @@ export default class View extends Component {
                                                     <div class="row">
                                                         <div class="col-md-5 col-5">
                                                             <i class="fas fa-envelope text-pink"></i>
-                                                            <strong class="margin-10px-left xs-margin-four-left text-pink">Email:</strong>
+                                                            <strong class="margin-10px-left xs-margin-four-left  abc">State:</strong>
                                                         </div>
                                                         <div class="col-md-7 col-7">
-                                                            <p><a href="javascript:void(0)">addyour@emailhere</a></p>
+                                                            <h1 className='firstname'>{this.state.currentdata.state}</h1>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                                <li>
+                                                    <div class="row">
+                                                        <div class="col-md-5 col-5">
+                                                            <i class="fas fa-envelope text-pink"></i>
+                                                            <strong class="margin-10px-left xs-margin-four-left  abc">DOB::</strong>
+                                                        </div>
+                                                        <div class="col-md-7 col-7">
+                                                            <h1 className='firstname'>{this.state.currentdata.dob   }</h1>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                                <li>
+                                                    <div class="row">
+                                                        <div class="col-md-5 col-5">
+                                                            <i class="fas fa-envelope text-pink"></i>
+                                                            <strong class="margin-10px-left xs-margin-four-left  abc">Contact:</strong>
+                                                        </div>
+                                                        <div class="col-md-7 col-7">
+                                                            <h1 className='firstname'>{this.state.currentdata.contact}</h1>
                                                         </div>
                                                     </div>
                                                 </li>
                                             </ul>
-                                        </div>
-
-                                        <h5 class="font-size24 sm-font-size22 xs-font-size20">Professional Skills</h5>
-
-                                        <div class="sm-no-margin">
-                                            <div class="progress-text">
-                                                <div class="row">
-                                                    <div class="col-7">Positive Behaviors</div>
-                                                    <div class="col-5 text-right">40%</div>
-                                                </div>
-                                            </div>
-                                            <div class="custom-progress progress">
-                                                <div role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style={{ width: "40%" }} class="animated custom-bar progress-bar slideInLeft bg-sky"></div>
-                                            </div>
-                                            <div class="progress-text">
-                                                <div class="row">
-                                                    <div class="col-7">Teamworking Abilities</div>
-                                                    <div class="col-5 text-right">50%</div>
-                                                </div>
-                                            </div>
-                                            <div class="custom-progress progress">
-                                                <div role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style={{ width: "50%" }} class="animated custom-bar progress-bar slideInLeft bg-orange"></div>
-                                            </div>
-                                            <div class="progress-text">
-                                                <div class="row">
-                                                    <div class="col-7">Time Management </div>
-                                                    <div class="col-5 text-right">60%</div>
-                                                </div>
-                                            </div>
-                                            <div class="custom-progress progress">
-                                                <div role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style={{ width: "60%" }} class="animated custom-bar progress-bar slideInLeft bg-green"></div>
-                                            </div>
-                                            <div class="progress-text">
-                                                <div class="row">
-                                                    <div class="col-7">Excellent Communication</div>
-                                                    <div class="col-5 text-right">80%</div>
-                                                </div>
-                                            </div>
-                                            <div class="custom-progress progress">
-                                                <div role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" class="animated custom-bar progress-bar slideInLeft bg-yellow"></div>
-                                            </div>
                                         </div>
 
                                     </div>

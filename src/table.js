@@ -1,3 +1,4 @@
+import { ClickAwayListener } from "@mui/material";
 import MUIDataTable from "mui-datatables";
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
@@ -8,11 +9,13 @@ export default class table extends Component {
     super(props);
 
     this.state = {
+      
       people: JSON.parse(localStorage.getItem("student")),
 
       columns: [
         {
           name: "id",
+          lable: 'Edit',
           options: {
             filter: true,
             sort: false,
@@ -20,9 +23,12 @@ export default class table extends Component {
             customBodyRender: (value, tableMeta, updateValue) => {
               return (
                 <Link to={'/form/' + value} >
-                  <button >
+                  {/* <button className="btn btn-primary edit">
                     Edit
-                  </button>
+                  </button> */}
+                  <lord-icon
+                    src="https://cdn.lordicon.com/wloilxuq.json"
+                    trigger="hover"></lord-icon>    
                 </Link>
               );
             }
@@ -38,9 +44,13 @@ export default class table extends Component {
             customBodyRender: (value, tableMeta, updateValue) => {
               return (
                 <Link to={'/view/' + value} >
-                  <button >
+                  {/* <button >
                     View
-                  </button>
+                  </button> */}
+                  <lord-icon
+                    src="https://cdn.lordicon.com/tyounuzx.json"
+                    trigger="hover">
+                  </lord-icon>
                 </Link>
               );
             }
@@ -76,6 +86,14 @@ export default class table extends Component {
         {
           name: "email",
           label: "email",
+          options: {
+            filter: true,
+            sort: true,
+          },
+        },
+        {
+          name: "password",
+          label: "password",
           options: {
             filter: true,
             sort: true,
@@ -121,6 +139,14 @@ export default class table extends Component {
             sort: false,
           },
         },
+        {
+          name: "dob",
+          label: "contact",
+          options: {
+            filter: true,
+            sort: false,
+          },
+        },
       ],
       options: {
         filterType: "checkbox",
@@ -139,16 +165,21 @@ export default class table extends Component {
   }
 
   componentDidMount() {
-    console.log(this.state.people)
+    // console.log(this.state.people)
     //  var people=  JSON.parse(localStorage.getItem("student"));
-    //  console.log('email',this.state,people.fname)
   }
 
-  render() {
 
+  render() {
     return (
       <div>
-        <button type="button" onClick={this.handlebutton} class="mt-3 mb-3  btn btn-primary">Add Student</button>
+        <Link to={'/form'} >
+          <button className="btn btn-primary edit mt-3 mb-3">
+            Add Student
+          </button>
+        </Link>
+
+        {/* <button type="button" onClick={this.handlebutton} class="mt-3 mb-3  btn btn-primary">Add Student</button> */}
 
         <MUIDataTable
           title={'Employee Data'}
@@ -156,9 +187,6 @@ export default class table extends Component {
           columns={this.state.columns}
           options={this.state.options}
         />
-
-
-
       </div>
     );
   }

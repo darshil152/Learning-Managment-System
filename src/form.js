@@ -3,6 +3,7 @@ import Layout from './layout';
 import "./form.css"
 import profile from './male.png'
 import { findRenderedDOMComponentWithClass } from 'react-dom/test-utils';
+import { Password } from '@mui/icons-material';
 
 
 export default class Form extends Component {
@@ -36,7 +37,8 @@ export default class Form extends Component {
             zipcode: '',
             y: [],
             id: '',
-            currentdata: ''
+            currentdata: '',
+            Password: ''
 
         }
 
@@ -50,7 +52,6 @@ export default class Form extends Component {
 
         let olddata = JSON.parse(localStorage.getItem('student'));
 
-
         let currentdata = ''
         for (let i = 0; i < olddata.length; i++) {
             if (olddata[i].id == id) {
@@ -58,7 +59,7 @@ export default class Form extends Component {
                 if (olddata[i].gender && olddata[i].gender !== '') {
                     document.getElementById(olddata[i].gender).click();
                 }
-                this.setState({ currentdata, fname: currentdata.fname, gender: currentdata.gender, email: currentdata.email })
+                this.setState({ currentdata,dob:currentdata.dob ,password: currentdata.password, fname: currentdata.fname, lname: currentdata.lname, gender: currentdata.gender, email: currentdata.email })
             }
         }
     }
@@ -71,10 +72,14 @@ export default class Form extends Component {
             this.setState({ image: reader.result })
         }
         reader.readAsDataURL(file);
+
     }
 
     onfnamechange = (e) => {
         this.setState({ fname: e.target.value })
+    }
+    onpasswordchange = (e) => {
+        this.setState({ password: e.target.value })
     }
     onmnamechange = (e) => {
         this.setState({ mname: e.target.value })
@@ -168,6 +173,8 @@ export default class Form extends Component {
                 if (validEmail) {
                     y.push({
                         image: this.state.image,
+                        password: this.state.password,
+
                         fname: this.state.fname,
                         mname: this.state.mname,
                         lname: this.state.lname,
@@ -203,6 +210,7 @@ export default class Form extends Component {
             } else {
                 y.push({
                     image: this.state.image,
+                    password: this.state.password,
                     fname: this.state.fname,
                     mname: this.state.mname,
                     lname: this.state.lname,
@@ -237,6 +245,9 @@ export default class Form extends Component {
 
             let objIndex = y.findIndex((obj => obj.id == this.state.id));
             console.log(y, objIndex, this.state.id)
+            y[objIndex].dob = this.state.dob
+            y[objIndex].password = this.state.pass
+            y[objIndex].lname = this.state.lname
             y[objIndex].fname = this.state.fname
             y[objIndex].email = this.state.email
             y[objIndex].gender = this.state.gender
@@ -288,7 +299,7 @@ export default class Form extends Component {
                                 <div>
                                     <label className='lableform'>Last Name:</label>
                                 </div>
-                                <input type='text' onChange={this.onlnamechange} />
+                                <input type='text' value={this.state.lname} onChange={this.onlnamechange} />
                             </div>
                             <div className='col-6 std'>
                                 <div>
@@ -303,19 +314,31 @@ export default class Form extends Component {
                             </div>
                         </div>
                         <div className='row row4'>
-                            <div className='col-6 std'>
+                            <div className='col-4 std'>
                                 <div>
                                     <label for="birthday" className='lableform'>Birthday:</label>
                                 </div>
-                                <input type="date" id="birthday" name="birthday" onChange={this.ondobchange} />
+                                <input type="date" id="birthday" name="birthday"  value={this.state.dob} onChange={this.ondobchange} />
                             </div>
-                            <div className='col-6 std'>
+                            <div className='col-4 std'>
                                 <div>
                                     <label for="email" className='lableform'>Enter your email:</label>
                                 </div>
                                 <input type="email" id="email" name="email" onChange={this.onemailchange} value={this.state.email} />
                             </div>
+                            <div className='col-4 std'>
+                                <div>
+                                    <label for="password" className='lableform'>Enter your password:</label>
+                                </div>
+                                <input type="password" id="password" name="password"  onChange={this.onpasswordchange} value={this.state.password} />
+                            </div>
                         </div>
+
+                        {/* <div className='col-6 std'>
+                                
+                        </div> */}
+
+
                         <div className='row row5'>
                             <div className='col-6 std'>
                                 <div>

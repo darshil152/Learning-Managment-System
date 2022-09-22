@@ -1,3 +1,19 @@
 img.viewimage {
     width: 350px;
+    border-radius: 170px;
+}
+h1.firstname{
+    font-size: 20px;
+    
+}
+
+strong.margin-10px-left.abc{
+    font-weight: 400;
+    font-family: 'Poppins', sans-serif;
+}
+
+dl, ol, ul {
+    margin-top: 0;
+    margin-bottom: 1rem;
+    line-height: 40px;
 }

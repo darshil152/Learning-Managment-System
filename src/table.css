@@ -7,6 +7,14 @@ table{
 width: 100px;
 }
 
+button.btn.btn-primary.edit{
+    width: 100%;
+}
+lord-icon{
+    width: 55px;
+    height: 50px;
+}
+
 tr.heading{
     text-align: center;
     background: #37304a;
@@ -47,5 +55,6 @@ div {
 }
 img.profilepic {
     vertical-align: middle;
-    width: 50%;
+    width: 75%;
+    border-radius: 15px;
 }
