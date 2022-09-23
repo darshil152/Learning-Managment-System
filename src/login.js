@@ -12,6 +12,7 @@ export default class Login extends Component {
       email: '',
       password: '',
       image: '',
+      color: '',
       people: JSON.parse(localStorage.getItem('student')),
       temparray: [],
     }
@@ -29,6 +30,9 @@ export default class Login extends Component {
   onepasswordchange = (e) => {
     this.setState({ password: e.target.value })
   }
+  onecolorchange = (e) => {
+    this.setState({ color: e.target.value })
+  }
   oneimagechange = (e) => {
     var file = e.target.files[0];
     var reader = new FileReader();
@@ -42,87 +46,87 @@ export default class Login extends Component {
 
   loginhadle = (data) => {
 
-    let temparray = this.state.temparray
-
-    temparray.push(data)
-    this.setState({ temparray })
-
-    let y = localStorage.setItem('login', JSON.stringify(temparray))
-
     let isemail = false;
-
     for (let i = 0; i < this.state.people.length; i++) {
-      if (data.email == this.state.people[i].email) {
+      if (data.email == this.state.people[i].email && data.password == this.state.people[i].password) {
         isemail = true
       }
     }
     if (isemail) {
-      window.location.href = '/form'
+      window.location.href = '/welcome'
     } else {
-      alert('please enter valid email adddress')
-
+      let temparray = this.state.temparray
+    temparray.push(data)
+    this.setState({ temparray })
+    let y = localStorage.setItem('login', JSON.stringify(temparray))
     }
-
   }
+
+
+
   render() {
     return (
-      <div>
-        <Formik
-          initialValues={{
-            email: "",
-            password: '',
-            image: ''
-          }}
-          onSubmit={(values) => {
-            this.loginhadle(values)
-            console.log('values :: ', values)
+      <div class="login-form">
+        <div class="form">
+          <Formik
+            initialValues={{
+              email: "",
+              password: '',
+              image: '',
+              color: '',
+            }}
+            onSubmit={(values) => {
+              this.loginhadle(values)
+              console.log('values :: ', values)
 
-          }}
-          validationSchema={Yup.object().shape({
-            email: Yup.string()
-              .email()
-              .required("Required"),
-            password: Yup.string().required()
-          })}
-        >
-          {props => {
-            const {
-              values,
-              touched,
-              errors,
-              dirty,
-              isSubmitting,
-              handleChange,
-              handleBlur,
-              handleSubmit,
-              handleReset,
-              setFieldValue,
-            } = props;
-            return (
-              <form onSubmit={handleSubmit}>
-                <label htmlFor="email" style={{ display: "block" }}>
-                  Email
-                </label>
-                <input
-                  id="email"
-                  placeholder="Enter your email"
-                  type="text"
-                  value={values.email}
-                  onChange={handleChange}
-                  onBlur={handleBlur}
-                  className={
-                    errors.email && touched.email
-                      ? "text-input error"
-                      : "text-input"
-                  }
-                />
-                {errors.email && touched.email && (
-                  <div className="text-danger input-feedback">{errors.email}</div>
-                )}
+            }}
+            validationSchema={Yup.object().shape({
+              email: Yup.string()
+                .email()
+                .required("Required"),
+              password: Yup.string().required('Please Enter your password')
+            })}
+          >
+            {props => {
+              const {
+                values,
+                touched,
+                errors,
+                dirty,
+                isSubmitting,
+                handleChange,
+                handleBlur,
+                handleSubmit,
+                handleReset,
+                setFieldValue,
+              } = props;
+              return (
+                <form onSubmit={handleSubmit}>
+                  <label htmlFor="email" style={{ display: "block" }}>
+                    Login
+                  </label>
+                  <input
+                    id="email"
+                    placeholder="Enter your email"
+                    type="text"
+                    value={values.email}
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                    className={
+                      errors.email && touched.email
+                        ? "text-input error"
+                        : "text-input"
+                    }
+                  />
 
 
-                <input id="file" name="file" type="file" onChange={(event) => {
-                  
+                  {errors.email && touched.email && (
+                    <div className="text-danger input-feedback">{errors.email}</div>
+                  )}
+
+
+                  {/* <input id="file" name="file" type="file" onChange={(event) => {
+
                   var file = event.currentTarget.files[0];
                   var reader = new FileReader();
                   reader.onloadend = () => {
@@ -131,45 +135,76 @@ export default class Login extends Component {
                   }
                   reader.readAsDataURL(file);
 
-                }} />
+                }} /> */}
 
-                <input
-                  id="password"
-                  placeholder="Enter your password"
-                  type="text"
-                  value={values.password}
+                  <input
+                    id="password"
+                    placeholder="Enter your password"
+                    type="text"
+                    value={values.password}
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                    className={
+                      errors.password && touched.password
+                        ? "text-input error"
+                        : "text-input"
+                    }
+                  />
+
+                  {errors.password && touched.password && (
+                    <div className="text-danger input-feedback">{errors.password}</div>
+                  )}
+
+
+                  {/* <label htmlFor="email" style={{ display: "block" }}>
+                  Color
+                </label>
+                <select
+                  id="color"
+                  value={values.color}
                   onChange={handleChange}
                   onBlur={handleBlur}
-                  className={
-                    errors.password && touched.password
-                      ? "text-input error"
-                      : "text-input"
-                  }
-                />
-                {errors.password && touched.password && (
-                  <div className="text-danger input-feedback">{errors.password}</div>
-                )}
-
-                <button
-                  type="button"
-                  className="outline"
-                  onClick={handleReset}
-                  disabled={!dirty || isSubmitting}
+                  style={{ display: "block" }}
                 >
-                  Reset
-                </button>
-                <button type="submit" disabled={isSubmitting}>
-                  Submit
-                </button>
+                  <option value="" label="Select a color">
+                    Select a color{" "}
+                  </option>
+                  <option value="red" label="red">
+                    {" "}
+                    red
+                  </option>
+                  <option value="blue" label="blue">
+                    blue
+                  </option>
+        >
+                  <option value="green" label="green">
+                    green
+                  </option>
+                </select>
+                {errors.color && <div className="input-feedback">{errors.color}</div>} */}
+
+                  <button
+                    type="button"
+                    className="outline"
+                    onClick={handleReset}
+                    disabled={!dirty || isSubmitting}
+                  >
+                    Reset
+                  </button>
+                  <button type="submit" disabled={isSubmitting}>
+                    Submit
+                  </button>
 
 
-              </form>
-            );
-          }}
-        </Formik>
+                </form>
+              );
+            }}
+          </Formik>
 
 
+        </div>
       </div>
+
     )
   }
 }

@@ -16,7 +16,6 @@ export default class Sidebar extends Component {
     render() {
         return (
 
-
             <div className='sidebar' >
                 <div className='row'>
                     <div className='col-12 abc xyzq'>

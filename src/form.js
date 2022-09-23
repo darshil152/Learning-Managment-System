@@ -45,6 +45,7 @@ export default class Form extends Component {
     }
 
     componentDidMount() {
+
         let url = window.location.href;
         let id = url.substring(url.lastIndexOf('/') + 1);
         console.log(id)
@@ -53,9 +54,11 @@ export default class Form extends Component {
         let olddata = JSON.parse(localStorage.getItem('student'));
 
         let currentdata = ''
+
         for (let i = 0; i < olddata.length; i++) {
             if (olddata[i].id == id) {
                 currentdata = olddata[i];
+                
                 if (olddata[i].gender && olddata[i].gender !== '') {
                     document.getElementById(olddata[i].gender).click();
                 }
@@ -160,21 +163,17 @@ export default class Form extends Component {
 
         if (this.state.currentdata == '') {
 
-
             if (y.length > 0) {
                 let validEmail = false
                 if ((/^[a-zA-Z0-9]+@[a-zA-Z0-9]+\.[A-Za-z]+$/.test((this.state.email)))) {
                     validEmail = true
                 }
-                console.log('email :: ', this.state.email)
-
-
+                // console.log('email :: ', this.state.email)
 
                 if (validEmail) {
                     y.push({
                         image: this.state.image,
                         password: this.state.password,
-
                         fname: this.state.fname,
                         mname: this.state.mname,
                         lname: this.state.lname,
@@ -244,7 +243,9 @@ export default class Form extends Component {
         } else {
 
             let objIndex = y.findIndex((obj => obj.id == this.state.id));
-            console.log(y, objIndex, this.state.id)
+
+            // console.log(y, objIndex, this.state.id)
+
             y[objIndex].dob = this.state.dob
             y[objIndex].password = this.state.pass
             y[objIndex].lname = this.state.lname

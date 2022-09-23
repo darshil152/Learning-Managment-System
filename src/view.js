@@ -14,6 +14,7 @@ export default class View extends Component {
         // console.log(id)
 
         let olddata = JSON.parse(localStorage.getItem('student'));
+
         let currentdata = ''
 
         for (let i = 0; i < olddata.length; i++) {
@@ -22,7 +23,7 @@ export default class View extends Component {
             }
         }
         this.setState({ currentdata })
-        console.log(currentdata)
+        // console.log(currentdata)
     }
     render() {
         return (
