@@ -17,14 +17,14 @@ export default class Login2 extends Component {
             gender: '',
             temparray: [],
         }
-
     }
 
     componentDidMount() {
         let array = JSON.parse(localStorage.getItem('login2'))
-        this.setState({ temparray: array })
+        if (array && array.length > 0) {
+            this.setState({ temparray: array })
+        }
     }
-
 
     onenamechange = (e) => {
         this.setState({ name: e.target.value })
@@ -64,6 +64,7 @@ export default class Login2 extends Component {
         } else {
             let temparray = this.state.temparray
             temparray.push(data)
+            console.log('temparray :: ', temparray)
             this.setState({ temparray })
             localStorage.setItem('login2', JSON.stringify(temparray))
             console.log(temparray)
@@ -79,7 +80,7 @@ export default class Login2 extends Component {
                         password: '',
                         changepassword: '',
                         color: '',
-                        gender:'',
+                        gender: '',
                     }}
                     onSubmit={(values) => {
                         this.login2(values)
@@ -99,6 +100,7 @@ export default class Login2 extends Component {
 
                         }),
                         color: Yup.string().required("Color is required!"),
+                        gender: Yup.string().required("gender is required!"),
                     })}
                 >
                     {props => {
@@ -187,7 +189,6 @@ export default class Login2 extends Component {
                                         green
                                     </option>
                                 </select>
-                                {errors.color && <div className="input-feedback">{errors.color}</div>}
 
 
                                 <label htmlFor="email" style={{ display: "block" }}>
@@ -199,7 +200,7 @@ export default class Login2 extends Component {
                                         type="radio"
                                         name="gender"
                                         value="Male"
-                                        checked={values.test === "Male"}
+                                        checked={values.gender === "Male"}
                                         onChange={() => setFieldValue("gender", "Male")}
                                     />Male
                                 </label>
@@ -208,10 +209,12 @@ export default class Login2 extends Component {
                                         type="radio"
                                         name="gender"
                                         value="Female"
-                                        checked={values.test === "Female"}
+                                        checked={values.gender === "Female"}
                                         onChange={() => setFieldValue("gender", "Female")}
                                     />Female
                                 </label>
+
+                                {errors.gender && <div className="input-feedback">{errors.gender}</div>}
 
                                 <button
                                     type="button"

@@ -11,8 +11,6 @@ export default class Login extends Component {
     this.state = {
       email: '',
       password: '',
-      image: '',
-      color: '',
       people: JSON.parse(localStorage.getItem('student')),
       temparray: [],
     }
@@ -30,9 +28,7 @@ export default class Login extends Component {
   onepasswordchange = (e) => {
     this.setState({ password: e.target.value })
   }
-  onecolorchange = (e) => {
-    this.setState({ color: e.target.value })
-  }
+
   oneimagechange = (e) => {
     var file = e.target.files[0];
     var reader = new FileReader();
@@ -53,12 +49,11 @@ export default class Login extends Component {
       }
     }
     if (isemail) {
-      window.location.href = '/welcome'
+      window.location.href = '/profile'
+      localStorage.setItem('loggedin', JSON.stringify(data))
     } else {
-      let temparray = this.state.temparray
-    temparray.push(data)
-    this.setState({ temparray })
-    let y = localStorage.setItem('login', JSON.stringify(temparray))
+      alert('Please Enter valid credential');
+      window.location.href = './login'
     }
   }
 

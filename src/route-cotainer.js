@@ -11,6 +11,7 @@ import View from './view';
 import Login from './login';
 import Welcome from './welcome';
 import Login2 from './login2';
+import Profile from './profile';
 
 
 
@@ -20,6 +21,7 @@ export default class Routercontainer extends Component {
             <BrowserRouter>
                 <Routes>
                     <Route path="/" element={<Form />}> </Route>
+                    <Route path="/profile" element={<Profile />}> </Route>
                     <Route path="/login2" element={<Login2 />}> </Route>
                     <Route path="/login" element={<Login />}> </Route>
                     <Route path="/view/:id" element={<View />}> </Route>

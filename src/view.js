@@ -138,7 +138,7 @@ export default class View extends Component {
                                                             <strong class="margin-10px-left xs-margin-four-left  abc">DOB::</strong>
                                                         </div>
                                                         <div class="col-md-7 col-7">
-                                                            <h1 className='firstname'>{this.state.currentdata.dob   }</h1>
+                                                            <h1 className='firstname'>{this.state.currentdata.dob}</h1>
                                                         </div>
                                                     </div>
                                                 </li>
