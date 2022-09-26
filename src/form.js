@@ -39,9 +39,7 @@ export default class Form extends Component {
             id: '',
             currentdata: '',
             Password: ''
-
         }
-
     }
 
     componentDidMount() {
@@ -75,7 +73,6 @@ export default class Form extends Component {
             this.setState({ image: reader.result })
         }
         reader.readAsDataURL(file);
-
     }
 
     onfnamechange = (e) => {

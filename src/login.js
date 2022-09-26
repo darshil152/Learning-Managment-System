@@ -70,11 +70,12 @@ export default class Login extends Component {
               image: '',
               color: '',
             }}
+            
             onSubmit={(values) => {
               this.loginhadle(values)
               console.log('values :: ', values)
-
             }}
+
             validationSchema={Yup.object().shape({
               email: Yup.string()
                 .email()
