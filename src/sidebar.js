@@ -34,6 +34,13 @@ export default class Sidebar extends Component {
                             <button className="btn">View Table</button>
                         </Link>
                     </div>
+
+                    <div className='col-12 abc'>
+                        <img src={student} className="student" />
+                        <Link to={'/attandance'} >
+                            <button className="btn">Attendance</button>
+                        </Link>
+                    </div>
                 </div>
             </div >
 

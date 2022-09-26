@@ -38,7 +38,8 @@ export default class Form extends Component {
             y: [],
             id: '',
             currentdata: '',
-            Password: ''
+            Password: '',
+
         }
     }
 
@@ -56,13 +57,14 @@ export default class Form extends Component {
         for (let i = 0; i < olddata.length; i++) {
             if (olddata[i].id == id) {
                 currentdata = olddata[i];
-                
+
                 if (olddata[i].gender && olddata[i].gender !== '') {
                     document.getElementById(olddata[i].gender).click();
                 }
                 this.setState({ currentdata, dob: currentdata.dob, password: currentdata.password, fname: currentdata.fname, lname: currentdata.lname, gender: currentdata.gender, email: currentdata.email })
             }
         }
+
     }
 
     onimagechange = (e) => {
@@ -155,6 +157,51 @@ export default class Form extends Component {
 
     click = (e) => {
 
+        let olddata = JSON.parse(localStorage.getItem('student'));
+
+
+        let alreadyRegistered = false
+        for (let i = 0; i < olddata.length; i++) {
+            if (olddata[i].email == this.state.email) {
+                alert('this email is already taken');
+                window.location.href = '/form'
+                alreadyRegistered = true
+            }
+        }
+
+
+        if (alreadyRegistered) {
+            y.push({
+                image: this.state.image,
+                password: this.state.password,
+                fname: this.state.fname,
+                mname: this.state.mname,
+                lname: this.state.lname,
+                gender: this.state.gender,
+                dob: this.state.dob,
+                email: this.state.email,
+                contact: this.state.contact,
+                econtact: this.state.econtact,
+                ffname: this.state.ffname,
+                fmname: this.state.fmname,
+                moname: this.state.moname,
+                fflname: this.state.fflname,
+                foccupation: this.state.foccupation,
+                molname: this.state.molname,
+                fqualification: this.state.fqualification,
+                fcontact: this.state.fcontact,
+                mqualification: this.state.mqualification,
+                line1: this.state.line1,
+                line2: this.state.line2,
+                city: this.state.city,
+                state: this.state.state,
+                country: this.state.country,
+                zipcode: this.state.zipcode,
+                id: Date.now()
+            })
+            localStorage.setItem('student', JSON.stringify(y))
+            window.location.href = '/table'
+        }
 
         let y = localStorage.getItem("student") ? JSON.parse(localStorage.getItem('student')) : []
 
