@@ -7,6 +7,7 @@ import './view.css'
 import './welcome.css'
 import './login.css'
 import './profile.css'
+import './attandance.css'
 import Form from './form'
 import Table from './table'
 

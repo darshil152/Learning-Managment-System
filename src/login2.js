@@ -95,9 +95,7 @@ export default class Login2 extends Component {
                             then: Yup.string().oneOf(
                                 [Yup.ref("password")],
                                 "Both password need to be the same"
-
                             )
-
                         }),
                         color: Yup.string().required("Color is required!"),
                         gender: Yup.string().required("gender is required!"),
