@@ -9,8 +9,8 @@ export default class table extends Component {
     super(props);
 
     this.state = {
-      
-      people: JSON.parse(localStorage.getItem("student")),
+
+      people: localStorage.getItem("student") ? JSON.parse(localStorage.getItem('student')) : [],
 
       columns: [
         {
@@ -28,7 +28,7 @@ export default class table extends Component {
                   </button> */}
                   <lord-icon
                     src="https://cdn.lordicon.com/wloilxuq.json"
-                    trigger="hover"></lord-icon>    
+                    trigger="hover"></lord-icon>
                 </Link>
               );
             }

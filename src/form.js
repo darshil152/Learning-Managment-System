@@ -50,7 +50,7 @@ export default class Form extends Component {
         console.log(id)
         this.setState({ id })
 
-        let olddata = JSON.parse(localStorage.getItem('student'));
+        let olddata = localStorage.getItem("student") ? JSON.parse(localStorage.getItem('student')) : []
 
         let currentdata = ''
 
@@ -157,7 +157,7 @@ export default class Form extends Component {
 
     click = (e) => {
 
-        let olddata = JSON.parse(localStorage.getItem('student'));
+        let olddata = localStorage.getItem("student") ? JSON.parse(localStorage.getItem('student')) : []
 
 
         let alreadyRegistered = false

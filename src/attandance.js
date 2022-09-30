@@ -6,58 +6,82 @@ export default class Attandance extends Component {
         super(props)
 
         this.state = {
-            atta: JSON.parse(localStorage.getItem('student')),
+            atta: localStorage.getItem("student") ? JSON.parse(localStorage.getItem('student')) : [],
             attandance: ' ',
-            temparray: [],
-            // uid: '',
+            x: [],
             date: '',
+            newdata: [],
         }
     }
-    onattanchange = (e) => {
-        this.setState({ attandance: e.target.value })
+
+    onattanchange = (e, id) => {
+        let x = {
+            attandance: e.target.checked,
+            date: e.target.value
+        }
+
+        this.setState({ attandance: e.target.checked })
+        let newData = ''
+        for (let i = 0; i < this.state.atta.length; i++) {
+            if (this.state.atta[i].id == id) {
+                newData = this.state.atta[i]
+            }
+        }
+        // console.log(newData)
+        newData['attandance'] = x
+        // console.log(newData)]
+
+        for (let i = 0; i < newData.length; i++) {
+            if (newData[i].id == this.state.atta.id) {
+            } alert('aasdksdb')
+        }
+
     }
+
+
+
     ondatechange = (e) => {
         this.setState({ date: e.target.value })
     }
 
-    click = (e) => {
-        let temparray = this.state.temparray
-        temparray.push({
+    click = (id) => {
+        let x = this.state.x
+        x.push({
             attandance: this.state.attandance,
             date: this.state.date,
-            // udi: Date.now()
+
         })
-        this.setState({ temparray })
-        localStorage.setItem('attandace', JSON.stringify(temparray))
+        this.setState({ x })
+        localStorage.setItem('attandace', JSON.stringify(x))
+
+
+        let objIndex = this.state.newdata.findIndex((obj => obj.id == this.state.id));
+        this.state.atta[objIndex].id = id
+        console.log(objIndex)
+
     }
 
 
-    present = (e) => {
-
-    }
-    absent = (e) => {
+    present = (e, id) => {
 
     }
 
     render() {
         return (
             <div >
+                <input type="date" id="attandance" name="attandance" onChange={this.ondatechange} />
                 {this.state.atta.map((items, i) => {
                     return (
-                        <div onChange={this.onattanchange}>
+                        <div>
                             <h5>{items.email}
-                                <input type="radio" name={'gender' + i} value="pre" id="pre" onClick={this.present} />present
-                                <br></br><input type="radio" name={'gender' + i} value="abs" id="abs" onClick={this.absent} />Absent</h5>
+                                <input type="checkbox" onChange={(e) => this.onattanchange(e, items.id)} name={'gender' + i} value="abc" id="pre" onClick={(id) => this.present(id)} />present
+                                <br></br> </h5>
                         </div>
-
                     )
-
                 })}
-                <input type="date" id="attandance" name="attandance" onChange={this.ondatechange} />
                 <button type="button" onClick={this.click} class="btn btn-primary click">Save</button>
+
             </div>
-
-
         )
     }
 }
