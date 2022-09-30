@@ -3,7 +3,7 @@ import Layout from './layout';
 import "./form.css"
 import profile from './male.png'
 import { findRenderedDOMComponentWithClass } from 'react-dom/test-utils';
-import { Password } from '@mui/icons-material';
+import { OutlinedFlag, Password } from '@mui/icons-material';
 
 
 export default class Form extends Component {
@@ -39,33 +39,28 @@ export default class Form extends Component {
             id: '',
             currentdata: '',
             Password: '',
-
         }
     }
 
     componentDidMount() {
-
         let url = window.location.href;
         let id = url.substring(url.lastIndexOf('/') + 1);
-        console.log(id)
+        // console.log(id)
         this.setState({ id })
-
-        let olddata = JSON.parse(localStorage.getItem('student'));
-
+        let olddata = localStorage.getItem("student") ? JSON.parse(localStorage.getItem('student')) : []
         let currentdata = ''
-
         for (let i = 0; i < olddata.length; i++) {
             if (olddata[i].id == id) {
                 currentdata = olddata[i];
-
                 if (olddata[i].gender && olddata[i].gender !== '') {
                     document.getElementById(olddata[i].gender).click();
                 }
                 this.setState({ currentdata, dob: currentdata.dob, password: currentdata.password, fname: currentdata.fname, lname: currentdata.lname, gender: currentdata.gender, email: currentdata.email })
             }
         }
-
     }
+
+
 
     onimagechange = (e) => {
         var file = e.target.files[0];
@@ -76,6 +71,7 @@ export default class Form extends Component {
         }
         reader.readAsDataURL(file);
     }
+
 
     onfnamechange = (e) => {
         this.setState({ fname: e.target.value })
@@ -156,10 +152,7 @@ export default class Form extends Component {
 
 
     click = (e) => {
-
-        let olddata = JSON.parse(localStorage.getItem('student'));
-
-
+        let olddata =   localStorage.getItem("student") ? JSON.parse(localStorage.getItem('student')) : []
         let alreadyRegistered = false
         for (let i = 0; i < olddata.length; i++) {
             if (olddata[i].email == this.state.email) {
@@ -168,7 +161,6 @@ export default class Form extends Component {
                 alreadyRegistered = true
             }
         }
-
 
         if (alreadyRegistered) {
             y.push({
@@ -298,11 +290,9 @@ export default class Form extends Component {
             y[objIndex].gender = this.state.gender
 
             localStorage.setItem('student', JSON.stringify(y))
-            window.location.href = '/table'
-
+            window.location.href = '/table' 
         }
     }
-
 
     render() {
         return (

@@ -10,7 +10,7 @@ export default class table extends Component {
 
     this.state = {
       
-      people: JSON.parse(localStorage.getItem("student")),
+      people: localStorage.getItem("student")? JSON.parse(localStorage.getItem("student")):[],
 
       columns: [
         {
