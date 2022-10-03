@@ -56,9 +56,6 @@ export default class Login extends Component {
       window.location.href = './login'
     }
   }
-
-
-
   render() {
     return (
       <div class="login-form">
@@ -114,7 +111,6 @@ export default class Login extends Component {
                         : "text-input"
                     }
                   />
-
 
                   {errors.email && touched.email && (
                     <div className="text-danger input-feedback">{errors.email}</div>
@@ -190,14 +186,10 @@ export default class Login extends Component {
                   <button type="submit" disabled={isSubmitting}>
                     Submit
                   </button>
-
-
                 </form>
               );
             }}
           </Formik>
-
-
         </div>
       </div>
 

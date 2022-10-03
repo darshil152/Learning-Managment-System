@@ -9,10 +9,10 @@ import { version } from 'react';
 // minified version is also included
 // import 'react-toastify/dist/ReactToastify.min.css';
 
-const Notify = () =>{
+const Notify = () => {
     toast(' correct credential!', {
         position: "top-center",
-        autoClose: 100,
+        autoClose: 1000,
         hideProgressBar: false,
         closeOnClick: true,
         pauseOnHover: true,
@@ -21,10 +21,22 @@ const Notify = () =>{
         });
 }
 
+const Notify1 = () => {
+    toast(' wrong credential',{
+        position: 'top-left',
+        autoClose: 1000,
+        hideProgressBar: false,
+        closeOnClick:true,
+        pauseOnHover:true,
+        draggable:true,
+        progress:undefined
+    })
+}
+
 const Notify2 = () =>{
     toast(' invalid credential ', {
         position: "bottom-center",
-        autoClose: 100,
+        autoClose: 1000,
         hideProgressBar: false,
         closeOnClick: true,
         pauseOnHover: true,
@@ -37,7 +49,7 @@ export default class popup extends Component {
   render() {
     return (
         <div>
-        <button onClick={() => {Notify(); Notify2();}}>Click</button>
+        <button onClick={() => {Notify(); Notify2(); Notify1();}}>Click</button>
         <ToastContainer />
       </div>
     )

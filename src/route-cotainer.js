@@ -14,6 +14,7 @@ import Login2 from './login2';
 import Profile from './profile';
 import Popup from './popup';
 import Attandance from './attandance';
+import Search from './search';
 
 
 
@@ -24,6 +25,7 @@ export default class Routercontainer extends Component {
                 <Routes>
                     <Route path="/" element={<Form />}> </Route>
                     <Route path="/popup" element={<Popup />}> </Route>
+                    <Route path="/search" element={<Search />}> </Route>    
                     <Route path="/attandance" element={<Attandance />}> </Route>
                     <Route path="/profile" element={<Profile />}> </Route>
                     <Route path="/login2" element={<Login2 />}> </Route>

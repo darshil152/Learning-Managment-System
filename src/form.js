@@ -61,7 +61,6 @@ export default class Form extends Component {
     }
 
 
-
     onimagechange = (e) => {
         var file = e.target.files[0];
         var reader = new FileReader();
