@@ -1,3 +1,4 @@
+import { ThreeGMobiledataSharp } from '@mui/icons-material'
 import React, { Component } from 'react'
 
 export default class Attandance extends Component {
@@ -11,6 +12,7 @@ export default class Attandance extends Component {
             x: [],
             date: '',
             newdata: [],
+            ab: '',
         }
     }
 
@@ -27,40 +29,40 @@ export default class Attandance extends Component {
                 newData = this.state.atta[i]
             }
         }
+
         // console.log(newData)
         newData['attandance'] = x
-        // console.log(newData)]
+        // console.log(newData)
 
-        for (let i = 0; i < newData.length; i++) {
-            if (newData[i].id == this.state.atta.id) {
-            } alert('aasdksdb')
+        for (let i = 0; i < this.state.atta.length; i++) {
+            if (this.state.atta[i].id == id) {
+            }
         }
-
     }
-
-
 
     ondatechange = (e) => {
         this.setState({ date: e.target.value })
     }
 
     click = (id) => {
-        let x = this.state.x
-        x.push({
-            attandance: this.state.attandance,
-            date: this.state.date,
+        let z = {
+            attandance: false,
+            date: this.state.date
+        }
 
-        })
-        this.setState({ x })
-        localStorage.setItem('attandace', JSON.stringify(x))
+        for (let i = 0; i < this.state.atta.length; i++) {
+            if (!this.state.atta[i].attandance) {
+                this.state.atta[i]['attandance'] = z
+            }
+            // console.log(this.state.atta[i]['attandance'])
+        }
 
-
-        let objIndex = this.state.newdata.findIndex((obj => obj.id == this.state.id));
-        this.state.atta[objIndex].id = id
-        console.log(objIndex)
+        if (this.state.newData['attandance'] = this.state.x) {
+            alert('asdakjsd')
+        }
+        localStorage.setItem('pree', JSON.stringify(this.state.atta))
 
     }
-
 
     present = (e, id) => {
 
@@ -74,7 +76,7 @@ export default class Attandance extends Component {
                     return (
                         <div>
                             <h5>{items.email}
-                                <input type="checkbox" onChange={(e) => this.onattanchange(e, items.id)} name={'gender' + i} value="abc" id="pre" onClick={(id) => this.present(id)} />present
+                                <input type="checkbox" onChange={(e) => this.onattanchange(e, items.id)} name={'gender' + i} value={this.state.date} id="pre" onClick={(id) => this.present(id)} />present
                                 <br></br> </h5>
                         </div>
                     )
@@ -85,3 +87,13 @@ export default class Attandance extends Component {
         )
     }
 }
+
+
+// var z = JSON.parse(localStorage.getItem('student'))
+
+// var res = {};
+// z.forEach((v) => {
+//     res[v.status] = (res[v.status] || 0) + 1;
+// });
+
+
