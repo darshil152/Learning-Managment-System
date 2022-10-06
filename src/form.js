@@ -42,6 +42,7 @@ export default class Form extends Component {
         }
     }
 
+
     componentDidMount() {
         let url = window.location.href;
         let id = url.substring(url.lastIndexOf('/') + 1);
@@ -60,7 +61,6 @@ export default class Form extends Component {
         }
     }
 
-
     onimagechange = (e) => {
         var file = e.target.files[0];
         var reader = new FileReader();
@@ -70,7 +70,6 @@ export default class Form extends Component {
         }
         reader.readAsDataURL(file);
     }
-
 
     onfnamechange = (e) => {
         this.setState({ fname: e.target.value })
@@ -99,6 +98,8 @@ export default class Form extends Component {
     onecontactchange = (e) => {
         this.setState({ econtact: e.target.value })
     }
+
+
 
     // parent detail //
     onffnamechange = (e) => {
@@ -129,6 +130,8 @@ export default class Form extends Component {
         this.setState({ mqualification: e.target.value })
     }
 
+    
+
     // address //
     online1change = (e) => {
         this.setState({ line1: e.target.value })
@@ -151,7 +154,10 @@ export default class Form extends Component {
 
 
     click = (e) => {
+
         let olddata =   localStorage.getItem("student") ? JSON.parse(localStorage.getItem('student')) : []
+        let olddata2 =  localStorage.getItem('student') ? JSON.parse(localStorage.getItem('student')) : []
+
         let alreadyRegistered = false
         for (let i = 0; i < olddata.length; i++) {
             if (olddata[i].email == this.state.email) {
@@ -290,6 +296,13 @@ export default class Form extends Component {
 
             localStorage.setItem('student', JSON.stringify(y))
             window.location.href = '/table' 
+
+            let objIndex2 = y.findIndex((obj => obj.id == this.state.id));
+            y[objIndex].dob = this.state.dob
+            y[objIndex].passsword = this.state.pass
+            y[objIndex].dob = this.state.fname
+            y[objIndex].passsword = this.state.email
+            y[objIndex].gender = this.state.gender
         }
     }
 
@@ -369,10 +382,7 @@ export default class Form extends Component {
                             </div>
                         </div>
 
-                        {/* <div className='col-6 std'>
-                                
-                        </div> */}
-
+                 
 
                         <div className='row row5'>
                             <div className='col-6 std'>
