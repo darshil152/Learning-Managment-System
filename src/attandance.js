@@ -67,6 +67,7 @@ export default class Attandance extends Component {
 
 
         let objIndex = this.state.atta.findIndex((obj => obj.id == id));
+        
         console.log('index :: ', objIndex)
         this.state.atta[objIndex].attandance = z
         localStorage.setItem('student', JSON.stringify(this.state.atta))

@@ -3,7 +3,7 @@ import Layout from './layout';
 import "./form.css"
 import profile from './male.png'
 import { findRenderedDOMComponentWithClass } from 'react-dom/test-utils';
-import { Password } from '@mui/icons-material';
+import { OutlinedFlag, Password } from '@mui/icons-material';
 
 
 export default class Form extends Component {
@@ -39,32 +39,28 @@ export default class Form extends Component {
             id: '',
             currentdata: '',
             Password: '',
-
         }
     }
 
-    componentDidMount() {
 
+    componentDidMount() {
         let url = window.location.href;
         let id = url.substring(url.lastIndexOf('/') + 1);
-        console.log(id)
+        // console.log(id)
         this.setState({ id })
 
         let olddata = localStorage.getItem("student") ? JSON.parse(localStorage.getItem('student')) : []
 
         let currentdata = ''
-
         for (let i = 0; i < olddata.length; i++) {
             if (olddata[i].id == id) {
                 currentdata = olddata[i];
-
                 if (olddata[i].gender && olddata[i].gender !== '') {
                     document.getElementById(olddata[i].gender).click();
                 }
                 this.setState({ currentdata, dob: currentdata.dob, password: currentdata.password, fname: currentdata.fname, lname: currentdata.lname, gender: currentdata.gender, email: currentdata.email })
             }
         }
-
     }
 
     onimagechange = (e) => {
@@ -105,6 +101,8 @@ export default class Form extends Component {
         this.setState({ econtact: e.target.value })
     }
 
+
+
     // parent detail //
     onffnamechange = (e) => {
         this.setState({ ffname: e.target.value })
@@ -133,6 +131,8 @@ export default class Form extends Component {
     onmqualificationchange = (e) => {
         this.setState({ mqualification: e.target.value })
     }
+
+    
 
     // address //
     online1change = (e) => {
@@ -168,7 +168,6 @@ export default class Form extends Component {
                 alreadyRegistered = true
             }
         }
-
 
         if (alreadyRegistered) {
             y.push({
@@ -297,11 +296,16 @@ export default class Form extends Component {
             y[objIndex].gender = this.state.gender
 
             localStorage.setItem('student', JSON.stringify(y))
-            window.location.href = '/table'
+            window.location.href = '/table' 
 
+            let objIndex2 = y.findIndex((obj => obj.id == this.state.id));
+            y[objIndex].dob = this.state.dob
+            y[objIndex].passsword = this.state.pass
+            y[objIndex].dob = this.state.fname
+            y[objIndex].passsword = this.state.email
+            y[objIndex].gender = this.state.gender
         }
     }
-
 
     render() {
         return (
@@ -379,10 +383,7 @@ export default class Form extends Component {
                             </div>
                         </div>
 
-                        {/* <div className='col-6 std'>
-                                
-                        </div> */}
-
+                 
 
                         <div className='row row5'>
                             <div className='col-6 std'>

@@ -9,8 +9,13 @@ export default class table extends Component {
     super(props);
 
     this.state = {
+<<<<<<< HEAD
 
       people: localStorage.getItem("student") ? JSON.parse(localStorage.getItem('student')) : [],
+=======
+      
+      people: localStorage.getItem("student")? JSON.parse(localStorage.getItem("student")):[],
+>>>>>>> b7e15dcc2b12c9baae33a68ffa006521f8c58bb1
 
       columns: [
         {
@@ -141,7 +146,7 @@ export default class table extends Component {
         },
         {
           name: "dob",
-          label: "contact",
+          label: "Birthday",
           options: {
             filter: true,
             sort: false,
@@ -161,7 +166,6 @@ export default class table extends Component {
 
   handlebutton = (e) => {
     window.location.href = '/form'
-
   }
 
   componentDidMount() {
@@ -192,3 +196,152 @@ export default class table extends Component {
   }
 }
 
+
+// 	import React, { Component } from "react";
+	// import Form from "./form";
+	// import Layout from "./layout";
+
+	// export default class Table extends Component {
+	//   constructor(props) {
+	// 	super(props);
+	// 	this.state = {
+	// 	  people: JSON.parse(localStorage.getItem("student")),
+	// 	};
+	//   }
+
+	//   click = (id) => {
+
+	// 	const newPeople = this.state.people.filter((items) => items.id !== id);
+	// 	this.setState({ people: newPeople });
+	// 	localStorage.setItem("student", JSON.stringify(newPeople));
+	//   };
+
+	//   click1 = (id) => {
+	// 	window.location.href = "/form/" + id;
+	//   };
+
+
+	//  handleSort = (type) => {
+
+	// 	let tempArrray = this.state.people
+
+	// 	tempArrray.sort((a, b) => {
+	// 	  const nameA = a.fname.toUpperCase(); // ignore upper and lowercase
+	// 	  const nameB = b.fname.toUpperCase(); // ignore upper and lowercase
+	// 	  if (nameA < nameB) {
+	// 		return -1;
+	// 	  }
+	// 	  if (nameA > nameB) {
+	// 		return 1;
+	// 	  }
+	// 	  return 0;
+	// 	});
+	// 	console.log('temp :: ', tempArrray)
+
+	// 	if (type === 'ace') {	
+	// 	  console.log('ace', tempArrray)
+	// 	  this.setState({ Array: tempArrray })
+	// 	} else {
+	// 	  console.log('dec')
+	// 	}
+	//   }
+	//   render() {
+	// 	return (
+	// 	  <Layout>
+	// 		<div className="main-section col-3 pt-3">
+	// 		  <button
+	// 			type="button"
+	// 			class="btn btn-primary"
+	// 			onClick={() => this.onhandleevent(this.state.type)}
+	// 		  >
+	// 			Ascending
+	// 		  </button>
+	// 		  {/* <button type="button" class="btn btn-primary" onClick={ () => this.onhandleevent(this.state.type)}>Descending Orders</button> */}
+
+	// 		  <h1>Personal Detail</h1>
+
+	// 		  <table>
+	// 			<tr className="heading">
+	// 			  <th colspan="9">Student</th>
+	// 			  <th colspan="9">Parent</th>
+	// 			  <th colspan="6">Infornation</th>
+	// 			  <th colSpan="2">Action</th>
+	// 			</tr>
+	// 			<tr className="val">
+	// 			  <th>Image</th>
+	// 			  <th>First Name</th>
+	// 			  <th>Middle Name</th>
+	// 			  <th>Last Name</th>
+	// 			  <th>Gender</th>
+	// 			  <th>Birthday</th>
+	// 			  <th>Email</th>
+	// 			  <th>Phno</th>
+	// 			  <th>ephno</th>
+
+	// 			  <th>Father's First Name:</th>
+	// 			  <th>Father's Middle Name:</th>
+	// 			  <th>mother's Middle Name:</th>
+	// 			  <th>Father's Last Name:</th>
+	// 			  <th>Father's Occupation:</th>
+	// 			  <th>mother's Last Name:</th>
+	// 			  <th>Father's Qualification:</th>
+	// 			  <th>Father's contact:</th>
+	// 			  <th>mother's Qualificaion:</th>
+
+	// 			  <th>Line1</th>
+	// 			  <th>line2</th>
+	// 			  <th>city</th>
+	// 			  <th>state</th>
+	// 			  <th>country</th>
+	// 			  <th>zipcode</th>
+
+	// 			  <th>Edit</th>
+	// 			  <th>Delete</th>
+	// 			</tr>
+
+	// 			{this.state.people.map((items, i) => {
+	// 			  return (
+	// 				<tr>
+	// 				  <th>
+	// 					<img src={items.image} className="table-pic" />
+	// 				  </th>
+	// 				  <th>{items.fname}</th>
+	// 				  <th>{items.mname}</th>
+	// 				  <th>{items.lname}</th>
+	// 				  <th>{items.gender}</th>
+	// 				  <th>{items.dob}</th>
+	// 				  <th>{items.email}</th>
+	// 				  <th>{items.contact}</th>
+	// 				  <th>{items.econtact}</th>
+
+	// 				  <th>{items.ffname}</th>
+	// 				  <th>{items.fmname}</th>
+	// 				  <th>{items.moname}</th>
+	// 				  <th>{items.fflname}</th>
+	// 				  <th>{items.foccupation}</th>
+	// 				  <th>{items.molname}</th>
+	// 				  <th>{items.fqualification}</th>
+	// 				  <th>{items.fcontact}</th>
+	// 				  <th>{items.mqualification}</th>
+
+	// 				  <th>{items.line1}</th>
+	// 				  <th>{items.line2}</th>
+	// 				  <th>{items.city}</th>
+	// 				  <th>{items.state}</th>
+	// 				  <th>{items.country}</th>
+	// 				  <th>{items.zipcode}</th>
+	// 				  <th>
+	// 					<button onClick={() => this.click1(items.id)}class="btn btn-primary" >Edit</button>
+	// 				  </th>
+	// 				  <th>
+	// 					<button onClick={() => this.click(items.id)} class="btn btn-danger">Delete</button>
+	// 				  </th>
+	// 				</tr>
+	// 			  );
+	// 			})}
+	// 		  </table>
+	// 		</div>
+	// 	  </Layout>
+	// 	);
+	//   }
+	// }
