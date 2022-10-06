@@ -279,7 +279,6 @@ export default class Form extends Component {
                     zipcode: this.state.zipcode,
                     id: Date.now()
                 })
-
                 // this.setState({ Array: y })
                 localStorage.setItem('student', JSON.stringify(y))
                 window.location.href = '/table'
