@@ -17,6 +17,12 @@ export default class Attandance extends Component {
         }
     }
 
+    componentDidUpdate(prevProps,prevState){
+        if (prevState.attandance !== this.state.attandance) {
+            console.log(prevState,"../././././.") 
+        }
+    }   
+
     onattanchange = (e, id) => {
         let x = {
             attandance: e.target.checked,
@@ -45,6 +51,8 @@ export default class Attandance extends Component {
         this.setState({ date: e.target.value })
     }
 
+    
+
     click = (id) => {
         let z = {
             attandance: false,
@@ -55,21 +63,20 @@ export default class Attandance extends Component {
             if (!this.state.atta[i].attandance) {
                 this.state.atta[i]['attandance'] = z
             }
-            console.log(this.state.atta[i].attandance)
+            console.log(z)
+            // console.log(this.state.atta[i].attandance)
         }
 
-        // if (this.state.newData['attandance'] = this.state.x) {
-        //     alert('asdakjsd')
-        // }
+
 
         console.log('state :: ', this.state.atta)
         localStorage.setItem('pree', JSON.stringify(this.state.atta))
 
 
-        let objIndex = this.state.atta.findIndex((obj => obj.id == id));
+        // let objIndex = this.state.atta.findIndex((obj => obj.id == id));
         
-        console.log('index :: ', objIndex)
-        this.state.atta[objIndex].attandance = z
+        // console.log('index :: ', objIndex)
+        // this.state.atta[objIndex].attandance = z
         localStorage.setItem('student', JSON.stringify(this.state.atta))
     }
 
@@ -94,13 +101,13 @@ export default class Attandance extends Component {
                         )
                     })
                 }
-                < button type="button" onClick={this.click} class="btn btn-primary click" > Save</button >
+                <button button type="button" onClick={this.click} class="btn btn-primary click" > Save</button>
 
-            </div >
+            </div>
         )
     }
 }
-
+            
 
 // var z = JSON.parse(localStorage.getItem('student'))
 

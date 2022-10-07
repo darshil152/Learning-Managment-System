@@ -15,6 +15,8 @@ import Profile from './profile';
 import Popup from './popup';
 import Attandance from './attandance';
 import Test from './test';
+import Forgitpassword from './forgitpassword';
+import Newpassword from './newpassword';
 
 
 
@@ -25,6 +27,14 @@ export default class Routercontainer extends Component {
                 <Routes>
                     <Route path="/" element={<Form />}> </Route>
                     <Route path="/test" element={<Test />}> </Route>
+
+                    <Route path="/newpass" element={<Newpassword />}> </Route>
+                    <Route path="/newpass/:id" element={<Newpassword />}> </Route>
+
+                    {/* <Route path="/forgot/:id" element={<Forgitpassword />}> </Route> */}
+                    <Route path="/forgot" element={<Forgitpassword />}> </Route>
+
+
                     <Route path="/popup" element={<Popup />}> </Route>
                     <Route path="/attandance" element={<Attandance />}> </Route>
                     <Route path="/profile" element={<Profile />}> </Route>

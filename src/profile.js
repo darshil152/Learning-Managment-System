@@ -48,6 +48,11 @@ export default class Profile extends Component {
                                                         <h6>{this.state.currentdata.email}</h6>
 
                                                     </div>
+                                                    <div className="col-6 mb-3">
+                                                        <p className="text-muted">Id</p>
+                                                        <h6>{this.state.currentdata.id}</h6>
+
+                                                    </div>
 
                                                     <div className="col-6 mb-3">
                                                         <p className="text-muted">Password</p>

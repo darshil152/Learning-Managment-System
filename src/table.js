@@ -9,13 +9,8 @@ export default class table extends Component {
     super(props);
 
     this.state = {
-<<<<<<< HEAD
-
-      people: localStorage.getItem("student") ? JSON.parse(localStorage.getItem('student')) : [],
-=======
       
       people: localStorage.getItem("student")? JSON.parse(localStorage.getItem("student")):[],
->>>>>>> b7e15dcc2b12c9baae33a68ffa006521f8c58bb1
 
       columns: [
         {

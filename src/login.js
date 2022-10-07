@@ -11,11 +11,11 @@ export default class Login extends Component {
     this.state = {
       email: '',
       password: '',
+      id:'',
       people: JSON.parse(localStorage.getItem('student')),
-      temparray: [],
+     temparray:[],
     }
   }
-
 
   componentDidMount() {
     let array = JSON.parse(localStorage.getItem('login'))
@@ -26,6 +26,9 @@ export default class Login extends Component {
     this.setState({ email: e.target.value })
   }
   onepasswordchange = (e) => {
+    this.setState({ password: e.target.value })
+  }
+  oneischange = (e) => {
     this.setState({ password: e.target.value })
   }
 
@@ -53,9 +56,19 @@ export default class Login extends Component {
       localStorage.setItem('loggedin', JSON.stringify(data))
     } else {
       alert('Please Enter valid credential');
-      window.location.href = './login'
+      window.location.href = './login:'
     }
   }
+  clickme =(e) =>{
+    window.location.href = "/forgot"
+  }
+  
+
+
+  // forgothadle = (e) => {
+  //   window.location.href = "/forgot"
+  // }
+
   render() {
     return (
       <div class="login-form">
@@ -70,6 +83,7 @@ export default class Login extends Component {
             
             onSubmit={(values) => {
               this.loginhadle(values)
+              this.forgothadle(values)
               console.log('values :: ', values)
             }}
 
@@ -186,6 +200,9 @@ export default class Login extends Component {
                   <button type="submit" disabled={isSubmitting}>
                     Submit
                   </button>
+                
+                <button onClick={this.clickme}>Forgot Password</button>
+                
                 </form>
               );
             }}

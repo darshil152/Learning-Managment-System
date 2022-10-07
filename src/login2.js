@@ -20,7 +20,7 @@ export default class Login2 extends Component {
     }
 
     componentDidMount() {
-        let array = JSON.parse(localStorage.getItem('login2'))
+        let array = JSON.parse(localStorage.getItem('forgot'))
         if (array && array.length > 0) {
             this.setState({ temparray: array })
         }
